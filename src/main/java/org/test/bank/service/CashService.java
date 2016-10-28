@@ -54,8 +54,6 @@ public class CashService {
     }
 
     public BigDecimal transferCash(UUID senderId, UUID recipientId, BigDecimal amount) {
-        // safe, because locks are reentrant
-
         LockTuple lockTuple = lockService.getLockTuple(senderId, recipientId);
         Lock firstLock = lockTuple.getFirstLock();
         Lock secondLock = lockTuple.getSecondLock();
