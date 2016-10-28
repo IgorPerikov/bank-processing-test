@@ -19,7 +19,11 @@ public class AccountService {
     private LockService lockService;
 
     public Account createNewAccount() {
-        return accountRepository.createNewAccount();
+        return accountRepository.createNewAccount(new Account());
+    }
+
+    public Account createNewAccount(UUID id) {
+        return accountRepository.createNewAccount(new Account(id));
     }
 
     public void deleteAccount(UUID id) {

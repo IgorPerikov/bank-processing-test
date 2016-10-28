@@ -14,8 +14,7 @@ public class AccountRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public Account createNewAccount() {
-        Account account = new Account();
+    public Account createNewAccount(Account account) {
         jdbcTemplate.update("INSERT INTO mysql.accounts(id, cash) values (?, ?)",
                 account.getId().toString(), account.getCash());
         return account;

@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.test.bank.entity.Account;
 import org.test.bank.service.AccountService;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.atomic.AtomicReference;
 
 @RestController
 public class AccountController {
@@ -24,6 +22,12 @@ public class AccountController {
     @RequestMapping(value = "/account", method = RequestMethod.POST)
     public ResponseEntity<Account> createAccount() {
         return ResponseEntity.ok(accountService.createNewAccount());
+    }
+
+    // this api endpoint should not exist. it exists only in case of testing suite
+    @RequestMapping(value = "/account/{id}", method = RequestMethod.POST)
+    public ResponseEntity<Account> createAccount(@PathVariable UUID id) {
+        return ResponseEntity.ok(accountService.createNewAccount(id));
     }
 
     @RequestMapping(value = "/account/{id}", method = RequestMethod.DELETE)

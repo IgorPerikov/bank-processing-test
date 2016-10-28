@@ -13,6 +13,11 @@ public class Account {
         this.cash = cash;
     }
 
+    public Account(UUID id) {
+        this.id = id;
+        this.cash = new BigDecimal(0);
+    }
+
     public Account() {
         this.id = UUID.randomUUID();
         this.cash = new BigDecimal(0);
